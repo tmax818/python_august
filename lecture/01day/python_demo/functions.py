@@ -1,15 +1,10 @@
 # a function is what it returns!!!!!
 
-def greet(param="coder"):
-    return 42
-    print("secret message")
+# function w/o param
 
 
-# greet("Lobo")
-# greet("Eddie")
-# greet("Andy")
-# greet()
+# function w/ param
 
-x = greet("Tyler")
 
-print(x)
+# function w/ default param
+
