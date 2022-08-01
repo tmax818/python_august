@@ -1,3 +1,6 @@
+person = "Cameron"
+
+person_list = ['Cameron', 25, True, True]
 person = {'name': 'Cameron', 'age': 25}
 
 people = [
