@@ -15,13 +15,13 @@ Welcome to the lecture notes and code. To clone this repo, click the green code 
 - clone the repository to your machine
 
 ```bash
-git clone https://github.com/tmax818/python_july.git
+git clone https://github.com/tmax818/python_august.git
 ```
 
 - `cd` into the new directory
 
 ```bash
-cd python_july
+cd python_august
 ```
 
 - Open the directory with VScode.
