@@ -1,5 +1,12 @@
 
 # Composite
+
+## Why have composite types?
+<!-- .element: class="fragment" -->
+
+![](../../images/junkdrawer.jpg)
+![](../../images/org_drawer1.jpg)
+<!-- .element: class="fragment" -->
 ---
 # Lists
 --
