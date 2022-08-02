@@ -1,54 +1,54 @@
 
 ## TODO: Print all the integers from 1 to 255.
-def print1to255():
+def print_1_to_255():
     pass
 
 ## TODO: Print integers from 0 to 255, and with each integer print the sum so far.
-def printIntsAndSum0To255():
+def print_ints_and_sum_0_to_255():
     pass
 
 ## TODO: Given an array, find and print its largest element.
-def printMaxOfArray(arr):
+def print_max_of_array(arr):
     pass
 
 ## TODO: Create an array with all the odd integers between 1 and 255 (inclusive).
-def returnOddsArray1to255():
+def return_odds_array_1_to_255():
     pass
 
 ## TODO: Given an array and a value Y, count and print the number of array values greater than Y.
-def returnArrayCountGreaterThanY(arr, y):
+def return_array_count_greater_thanY(arr, y):
     pass
 
 ## TODO: Given an array, print the max, min and average values for that array.
-def printMaxMinAverageArrayVals(arr):
+def printMaxMin_average_array_vals(arr):
     pass
 
 ## TODO: Replace any negative array values with 'Dojo'.
-def swapStringForArrayNegativeVals(arr):
+def swapStringFor_array_negative_vals(arr):
     pass
 
 ## TODO: Print all odd integers from 1 to 255.
-def printOdds1to255():
+def print_odds_1_to_255():
     pass
 
 ## TODO: Iterate through a given array, printing each value.
-def printArrayVals(arr):
+def print_array_vals(arr):
     pass
 
 ## TODO: Analyze an array’s values and print the average
-def printAverageOfArray(arr):
+def print_average_of_array(arr):
     pass
 
 ## TODO: Square each value in a given array, returning that same array with changed values
-def squareArrayVals(arr):
+def square_array_vals(arr):
     pass
 
 ## TODO: Return the given array, after setting any negative values to zero.
-def zeroOutArrayNegativeVals(arr):
+def zero_out_array_negative_vals(arr):
     pass
 
 ## TODO: Given an array, move all values forward by one index, dropping the first and leaving a '0' value at the end.
-def shiftArrayValsLeft(arr):
+def shift_array_vals_left(arr):
     pass
 
 
