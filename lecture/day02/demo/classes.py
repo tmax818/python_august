@@ -1,13 +1,22 @@
-class Tree:
+class Dojo:
     
-    def __init__(self, color, type, height):
-        self.color = color
-        self.type = type
-        self.height = height
-        print(self)
+    def __init__(self, location) -> None:
+        self.location = location
+        self.ninjas = []
 
-    def blow_in_wind(self):
-        print(f"{self.type} tree blowing in the wind")
+    def add_ninja(self, ninja):
+        self.ninjas.append(ninja)
 
+    
 
-tree1 = Tree('green', 'maple', 50)
+class Ninja:
+    
+    def __init__(self, name, age) -> None:
+        self.name = name
+        self.age = age
+
+ninja1 = Ninja('Nisrine', 31)
+ninja2 = Ninja('Tre', 27)
+
+dojo1 = Dojo('burbank')
+dojo2 = Dojo('san jose')
