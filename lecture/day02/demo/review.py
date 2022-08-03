@@ -37,3 +37,9 @@ def hello():
     print("hello")
     return "hello"
 
+def say_hello(name):
+    print(f"Hello {name * 35}")
+
+
+say_hello("42")
+# name = 42
