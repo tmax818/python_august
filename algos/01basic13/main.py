@@ -32,7 +32,7 @@ def return_odds_array_1_to_255():
             odds.append(i)
     return(odds)
 
-print(return_odds_array_1_to_255())
+# print(return_odds_array_1_to_255())
 odds = return_odds_array_1_to_255()
 ## TODO: Given an array and a value Y, count and print the number of array values greater than Y.
 def return_array_count_greater_thanY(arr, y):
@@ -42,22 +42,57 @@ def return_array_count_greater_thanY(arr, y):
             count += 1
     print(count)
 
-return_array_count_greater_thanY(return_odds_array_1_to_255(), 163)
+# return_array_count_greater_thanY(return_odds_array_1_to_255(), 163)
 ## TODO: Given an array, print the max, min and average values for that array.
 def printMaxMin_average_array_vals(arr):
-    pass
+    max = arr[0]
+    min = arr[0]
+    sum = 0
+    for i in arr:
+        if max < i:
+            max = i
+        if min > i:
+            min = i
+        sum += i
+    print(max, min, sum)
+    avg = sum / len(arr)
+    print(avg)
+
+printMaxMin_average_array_vals([1,2,3,42,4,5,6])
 
 ## TODO: Replace any negative array values with 'Dojo'.
 def swapStringFor_array_negative_vals(arr):
-    pass
+    for i in range(len(arr)):
+        if arr[i] < 0:
+            arr[i] = 'Dojo'
+    return arr
+
+def swapStringFor_array_negative_vals2(arr):
+    emptyArr = []
+    for i in arr:
+        if i < 0:
+            emptyArr.append('Dojo')
+        else:
+            emptyArr.append(i)
+    return emptyArr
+
+
+print(swapStringFor_array_negative_vals([1,-2, 3, -4, 5, -6]))
+print(swapStringFor_array_negative_vals2([1,-2, 3, -4, 5, -6]))
 
 ## TODO: Print all odd integers from 1 to 255.
 def print_odds_1_to_255():
-    pass
+    for i in range(256):
+        if i % 2 == 1:
+            print(i)
 
+# print_odds_1_to_255()
 ## TODO: Iterate through a given array, printing each value.
 def print_array_vals(arr):
-    pass
+    for i in arr:
+        print(i)
+        
+print_array_vals([1,2,3,4,5])
 
 ## TODO: Analyze an array’s values and print the average
 def print_average_of_array(arr):
