@@ -1,14 +1,20 @@
-# hello_flask
-
-- [ ] create a new [directory](.)
-- [ ] create virutual environment:
+## flask routes
 
 ```
-pipenv install flask
-```
-- [ ] activate virutal env
-```
-pipenv shell
+mkdir flask_dir
+cd flask_dir
 ```
 
-- [ ] create [server.py](server.py)
+```
+[python -m] pipenv install flask
+[python -m] pipenv shell
+
+```
+
+- [ ] make [server.py](server.py)
+- [ ] make [index.html](templates/index.html)
+
+- you have two functions with the same name!!!
+```
+AssertionError: View function mapping is overwriting an existing endpoint function: hello_world
+```
