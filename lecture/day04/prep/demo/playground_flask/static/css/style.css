@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 950px;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+
+}
+h1{
+    text-align: center;
+    font-size: xx-large;
+}
+
+.sub-content {
+    height: 200px;
+    width: 200px;
+    background-color: lightblue;
+    margin: 15px 5px;
+    border-radius: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
