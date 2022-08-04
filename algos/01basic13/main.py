@@ -92,22 +92,38 @@ def print_array_vals(arr):
     for i in arr:
         print(i)
         
-print_array_vals([1,2,3,4,5])
+# print_array_vals([1,2,3,4,5])
 
 ## TODO: Analyze an array’s values and print the average
 def print_average_of_array(arr):
-    pass
+    sum = 0
+    for num in arr:
+        sum += num
+    print(sum/len(arr))
 
+print_average_of_array([1,2,3,4,5])
 ## TODO: Square each value in a given array, returning that same array with changed values
 def square_array_vals(arr):
-    pass
+    for i in range(len(arr)):
+        arr[i] = arr[i] * arr[i]
+    print(arr)
 
+square_array_vals([1,2,3,4,5])
 ## TODO: Return the given array, after setting any negative values to zero.
 def zero_out_array_negative_vals(arr):
-    pass
+    for i in range(len(arr)):
+        if arr[i] < 0:
+            arr[i] = 0
+    return arr
 
+print(zero_out_array_negative_vals([1, -5, 8, -9]))
 ## TODO: Given an array, move all values forward by one index, dropping the first and leaving a '0' value at the end.
 def shift_array_vals_left(arr):
-    pass
+    for i in range(len(arr)-1):
+        arr[i] = arr[i + 1]
+    arr[-1] = 0
+    return arr
+
+print(shift_array_vals_left([1,2,3,4,5])) #=> [2,3,4,5,0] 
 
 
