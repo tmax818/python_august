@@ -9,8 +9,7 @@ def hello_world():
 @app.route('/form', methods=['POST'])
 def handle_form_data():
     print(request.form)
-    session['key'] = request.form['key']
-
+    session['data'] = request.form
     return redirect('/')
 
 @app.route('/clear')
