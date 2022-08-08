@@ -2,12 +2,12 @@
   Given an array of strings
   return the number of times each string occurs (a frequency / hash table)
 */
-
+// {a: 3}
 const arr1 = ["a", "a", "a"];
 const expected1 = {
   a: 3,
 };
-
+// {a:2, b:1...B:1}
 const arr2 = ["a", "b", "a", "c", "B", "c", "c", "d"];
 const expected2 = {
   a: 2,
