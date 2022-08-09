@@ -3,7 +3,7 @@
   return a new string with the duplicates excluded
   Bonus: Keep only the last instance of each character.
 */
-
+/// {a: }
 const str1 = "abcABC";
 const expected1 = "abcABC";
 

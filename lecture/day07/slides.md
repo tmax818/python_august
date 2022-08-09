@@ -167,7 +167,7 @@ WHERE condition(s)
 
 ```sql
 DELETE FROM table_name (column_name1, column_name2) 
-VALUES('column1_value', 'column2_value');
+VALUES('column1_value', 'column2_value') WHERE id = id;
 ```
 ---
 ## Functions
