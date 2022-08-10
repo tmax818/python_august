@@ -22,4 +22,26 @@ const expected3 = "cba fed ihg";
  * @param {string} str Contains space separated words.
  * @returns {string} The given string with each word's letters reversed.
  */
-function reverseWords(str) {}
+// const str2 = "hello world";
+// strArr = ["hello", "world"]
+// temp = "olleh"
+// newArr = ['olleh']
+// temp = "dlrow"
+// newArr = ['olleh', 'dlrow']
+function reverseWords(str) {
+    let strArr = str.split(" ")
+    let newArr = []
+    for(let i = 0; i < strArr.length; i++){
+        var temp = ""
+        for(let j = strArr[i].length -1; j >= 0; j--){
+            temp += strArr[i][j]
+        }
+        newArr.push(temp)
+        
+    }
+    console.log(newArr.join(' '))
+}
+
+reverseWords(str1)
+reverseWords(str2)
+reverseWords(str3)
