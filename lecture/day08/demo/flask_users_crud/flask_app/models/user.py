@@ -1,8 +1,8 @@
 # import the function that will return an instance of a connection
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the user table from our database
 
-DATABASE = "users"
+DATABASE = 'users'
 
 class User:
     def __init__( self , data ):
@@ -13,31 +13,19 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
     # Now we use class methods to query our database
-
-
-    ## ! CREATE
-    @classmethod
-    def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
-        ## prepared statement varibles must match keys in data dict
-        return connectToMySQL(DATABASE).query_db(query, data)
-
-
-    ## ! READ/RETRIEVE ALL
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users;"
+        # make sure to call the connectToMySQL function with the schema you are targeting.
         results = connectToMySQL(DATABASE).query_db(query)
+        # Create an empty list to append our instances of users
         users = []
+        # Iterate over the db results and create instances of users with cls.
         for user in results:
-            users.append( User(user) )
+            users.append( cls(user) )
         return users
-
-    ## ! READ/RETRIEVE ONE 
+    
     @classmethod
-    def get_one(cls, data):
-        query = "SELECT * FROM users WHERE id=%(id)s;"
-        result = connectToMySQL(DATABASE).query_db(query, data)
-        user = User(result[0])
-        return user
-
+    def save(cls, data):
+        query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
