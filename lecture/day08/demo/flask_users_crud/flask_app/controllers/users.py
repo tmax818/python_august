@@ -13,3 +13,9 @@ def create_user():
 @app.route('/')
 def index():
     return render_template('index.html', users = User.get_all())
+
+# ! DELETE
+@app.route('/destroy/<int:id>')
+def destroy(id):
+    User.destroy({'id': id})
+    return redirect('/')

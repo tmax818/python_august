@@ -13,6 +13,7 @@ class User:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
     # Now we use class methods to query our database
+    
     # ! READ ALL
     @classmethod
     def get_all(cls):
@@ -25,8 +26,15 @@ class User:
         for user in results:
             users.append( cls(user) )
         return users
+
     # ! CREATE
     @classmethod
     def save(cls, data):
         query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+    # ! DELETE
+    @classmethod
+    def destroy(cls, data):
+        query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
