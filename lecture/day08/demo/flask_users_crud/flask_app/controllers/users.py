@@ -21,6 +21,18 @@ def show_user(id):
     user = User.get_one(data)
     return render_template('show_user.html', user = user)
 
+# ! UPDATE
+@app.route('/edit/<int:id>')
+def edit_user(id):
+    data = {'id':id}
+    return render_template('edit_user.html', user = User.get_one(data))
+
+@app.route('/update/user', methods = ['post'])
+def update_user():
+    print(request.form)
+    User.update(request.form)
+    return redirect('/')
+
 # ! DELETE 
 @app.route('/delete/<int:id>')
 def delete_user(id):
