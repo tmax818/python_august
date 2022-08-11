@@ -6,7 +6,7 @@ from flask_app.models.user import User
 @app.route('/create/user', methods = ['post'])
 def create_user():
     print(request.form)
-    User.save(request.form)
+    user = User.save(request.form)
     return redirect('/')
 
 # ! READ ALL
@@ -31,7 +31,7 @@ def edit_user(id):
 def update_user():
     print(request.form)
     User.update(request.form)
-    return redirect('/')
+    return redirect(f"/show/{request.form['id']}")
 
 # ! DELETE 
 @app.route('/delete/<int:id>')
