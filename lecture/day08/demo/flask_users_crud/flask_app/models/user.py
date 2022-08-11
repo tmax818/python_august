@@ -27,6 +27,14 @@ class User:
             users.append( cls(user) )
         return users
 
+    # ! READ/RETRIEVE ONE
+    @classmethod
+    def get_one(cls,data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        user = User(result[0])
+        return user
+
     # ! CREATE
     @classmethod
     def save(cls, data):
