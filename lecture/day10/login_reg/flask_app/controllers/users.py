@@ -25,8 +25,6 @@ def login():
     pass
     return redirect('/dashboard')
 
-
-
 # TODO LOGOUT
 @app.route('/logout')
 def logout():
