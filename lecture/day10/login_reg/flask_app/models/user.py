@@ -1,7 +1,9 @@
 # import the function that will return an instance of a connection
 from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the user table from our database
-
+from flask_app import flash
+import re
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 DATABASE = 'login_reg'
 
 class User:
@@ -36,10 +38,31 @@ class User:
         user = User(result[0])
         return user
 
+    @classmethod
+    def get_one_with_email(cls,data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        user = User(result[0])
+        return user
+
     # ! CREATE
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+    @staticmethod
+    def validate_user(user:dict) -> bool:
+        is_valid = True
+        if len(user['first_name']) < 3:
+            is_valid = False
+            flash("Name must be at least 3 chars", 'first_name')
+        if not EMAIL_REGEX.match(user['email']): 
+            flash("Invalid email address!", 'email')
+            is_valid = False
+        if user['password'] != user['password_confirmation']:
+            flash("passwords must match!", 'password')
+            is_valid = False
+        return is_valid
 
 

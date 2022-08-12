@@ -16,7 +16,7 @@
                     <h5 class="card-header">REGISTER</h5>
                     <div class="card-body">
                         {% with messages = get_flashed_messages(with_categories = True) %}
-                        <form action="/users/register" method="post">
+                        <form action="/register" method="post">
                             <div class="mb-3">
                                 <label for="first_name" class="form-label">First Name:</label>
                                 <input type="text" name="first_name" id="first_name" class="form-control">
