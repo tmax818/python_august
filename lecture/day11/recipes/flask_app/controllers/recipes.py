@@ -19,7 +19,7 @@ def create_recipe():
 @app.route('/dashboard')
 @app.route('/recipes')
 def recipes():
-    return render_template('dashboard.html', recipes = Recipe.get_all())
+    return render_template('dashboard.html', recipes = Recipe.get_all_with_user())
 
 # ! READ ONE
 @app.route('/show/recipe/<int:id>')

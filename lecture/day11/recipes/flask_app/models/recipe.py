@@ -1,6 +1,7 @@
 # import the function that will return an instance of a connection
 from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the recipe table from our database
+from pprint import pprint
 
 DATABASE = 'recipes'
 
@@ -13,6 +14,8 @@ class Recipe:
         self.date_made = data['date_made']
         self.under_30 = data['under_30']
         self.user_id = data['user_id']
+        if 'first_name'in data:
+            self.first_name = data['first_name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
     # Now we use class methods to query our database
@@ -23,6 +26,19 @@ class Recipe:
         query = "SELECT * FROM recipes;"
         # make sure to call the connectToMySQL function with the schema you are targeting.
         results = connectToMySQL(DATABASE).query_db(query)
+        # Create an empty list to append our instances of recipes
+        recipes = []
+        # Iterate over the db results and create instances of recipes with cls.
+        for recipe in results:
+            recipes.append( cls(recipe) )
+        return recipes
+
+    @classmethod
+    def get_all_with_user(cls):
+        query = "SELECT * FROM recipes JOIN users ON recipes.user_id = users.id;"
+        # make sure to call the connectToMySQL function with the schema you are targeting.
+        results = connectToMySQL(DATABASE).query_db(query)
+        pprint(results)
         # Create an empty list to append our instances of recipes
         recipes = []
         # Iterate over the db results and create instances of recipes with cls.

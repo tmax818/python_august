@@ -49,11 +49,6 @@ def login():
     session['first_name'] = user_in_db.first_name
     return redirect('/dashboard')
 
-@app.route('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect('/logout')
-    return render_template('dashboard.html')
 
 # TODO LOGOUT
 @app.route('/logout')
