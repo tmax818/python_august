@@ -13,10 +13,10 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Name</th>
+            <th scope="col">Under 30</th>
+            <th scope="col">Posted By</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,13 @@
                 {% endif %}
               </td>
               <td>{{recipe.first_name}}</td>
-              <td><a href="">view</a>|<a href="">edit</a>|<a href="">delete</a></td>
+              <td>
+                <a href="">view</a>
+                {% if recipe.user_id == session.user_id %}
+                |<a href="/edit/{{recipe.id}}">edit</a>
+                |<a href="">delete</a>
+                {% endif %}
+              </td>
             </tr>
             {% endfor %}
  
@@ -40,6 +46,7 @@
       </table>
     <a class="btn btn-danger" href="/logout">logout</a>
     <a class="btn btn-primary" href="/new/recipe">add recipe</a>
+    <a class="btn btn-primary" href="/edit/user">update account</a>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask_app import app, render_template, request, redirect
+from flask_app import app, render_template, request, redirect, session
 from flask_app.models.recipe import Recipe
 from flask_app.models.user import User
 
@@ -11,7 +11,9 @@ def new_recipe():
 # ! CREATE 
 @app.route('/create/recipe', methods = ['post'])
 def create_recipe():
-    print(request.form)
+    print(request.form )
+    if not Recipe.validate_recipe(request.form):
+        return redirect('/new/recipe')
     recipe = Recipe.save(request.form)
     return redirect('/recipes')
 
@@ -19,6 +21,10 @@ def create_recipe():
 @app.route('/dashboard')
 @app.route('/recipes')
 def recipes():
+    # ! code to keep non-logged-in users from visiting route
+    if 'user_id' not in session:
+        return redirect('/logout')
+
     return render_template('dashboard.html', recipes = Recipe.get_all_with_user())
 
 # ! READ ONE
@@ -38,8 +44,10 @@ def edit_recipe(id):
 @app.route('/update/recipe', methods = ['post'])
 def update_recipe():
     print(request.form)
+    if not Recipe.validate_recipe(request.form):
+        return redirect(f"/edit/{request.form['id']}")
     Recipe.update(request.form)
-    return redirect(f"/show/{request.form['id']}")
+    return redirect(f"/dashboard")
 
 # ! DELETE 
 @app.route('/delete/<int:id>')

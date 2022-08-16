@@ -1,6 +1,8 @@
 # import the function that will return an instance of a connection
+from operator import is_
 from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the recipe table from our database
+from flask_app import flash
 from pprint import pprint
 
 DATABASE = 'recipes'
@@ -72,3 +74,11 @@ class Recipe:
     def destroy(cls, data):
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+    @staticmethod
+    def validate_recipe(recipe:dict) -> bool:
+        is_valid = True
+        if len(recipe['name']) < 3:
+            flash('name is too short!!')
+            is_valid = False
+        return is_valid

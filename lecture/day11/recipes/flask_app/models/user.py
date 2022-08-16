@@ -56,6 +56,11 @@ class User:
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
 
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id=%(id)s;"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
     @staticmethod
     def validate_user(user:dict) -> bool:
         is_valid = True
@@ -65,9 +70,14 @@ class User:
         if not EMAIL_REGEX.match(user['email']): 
             flash("Invalid email address!", 'email')
             is_valid = False
-        if user['password'] != user['password_confirmation']:
-            flash("passwords must match!", 'password')
-            is_valid = False
+        # for the edit user, no password is provided.
+        if 'password' in user:
+            if user['password'] != user['password_confirmation']:
+                flash("passwords must match!", 'password')
+                is_valid = False
+            if len(user['password']) < 8:
+                flash("password must be at least 8 chars", 'password')
+                is_valid = False
         return is_valid
 
 

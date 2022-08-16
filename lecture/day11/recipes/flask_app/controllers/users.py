@@ -12,6 +12,11 @@ def index():
 def register():
     ## validate them
     print(request.form)
+    data = {'email': request.form['email']}
+    user_in_db = User.get_one_with_email(data)
+    if user_in_db:
+        flash("email already in use", 'email')
+        return redirect('/')
     if not User.validate_user(request.form):
         return redirect('/')
     hashed_pw = bcrypt.generate_password_hash(request.form['password'])
@@ -61,9 +66,15 @@ def logout():
 
 @app.route('/edit/user')
 def edit_user():
-    pass
+    data = {'id': session['user_id']}
+    return render_template('edit_user.html', user = User.get_one(data))
 
 @app.route('/update/user', methods = ['POST'])
 def update_user():
-    pass
+    print(request.form)
+    if not User.validate_user(request.form):
+        return redirect('/edit/user')
+    User.update(request.form)
+    return redirect('/dashboard')
+
 
