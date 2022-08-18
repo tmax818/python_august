@@ -77,4 +77,9 @@ def update_user():
     User.update(request.form)
     return redirect('/dashboard')
 
+@app.route('/show/user')
+def show_user():
+    data = {'id': session['user_id']}
+    return render_template('show_user.html', user = User.get_one_with_recipes(data))
+
 
