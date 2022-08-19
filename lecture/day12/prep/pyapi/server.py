@@ -3,11 +3,10 @@ import requests
 from pprint import pprint
 app = Flask(__name__)
 global url 
-url = "https://rickandmortyapi.com/api"
-
 @app.route('/')
 def index():
-    return render_template('index.html', data = requests.get(url).json())
+    url = "https://www.ncei.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01"
+    return render_template('index.html', data = requests.get(url,headers = {'token': 'hxaHeQczjNjFqNJtWyCxxajuNFrTqDlc'}).json())
 
 @app.route('/character')
 def characters():
