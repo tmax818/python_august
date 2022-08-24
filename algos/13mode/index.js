@@ -33,4 +33,35 @@ const expected5 = [5, 1];
  * @param {Array<number>} nums Test
  * @returns {Array<number>} Mode or modes in any order.
  */
-function mode(nums) {}
+function mode(nums) {
+  const freqTable = {}
+  for(let i = 0; i < nums.length; i++){
+    if(freqTable[nums[i]]){
+      freqTable[nums[i]] += 1
+    } else {
+      freqTable[nums[i]] = 1
+    }
+  }
+  console.log(freqTable)
+  // find max value in freqTable
+  var max = 0
+  for(let el in freqTable){
+    if(freqTable[el] > max){
+      max = freqTable[el]
+    }
+    console.log("max", max)
+  }
+    let newArr = []
+  for(let el in freqTable){
+    if(freqTable[el] === max ){
+      newArr.push(el)
+    }
+  }
+  console.log(newArr)
+}
+
+mode(nums1)
+mode(nums2)
+mode(nums3)
+mode(nums4)
+mode(nums5)
