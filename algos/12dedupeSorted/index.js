@@ -27,4 +27,6 @@ const expected4 = [1];
  * @param {Array<number>} nums
  * @returns {Array<number>} The given array deduped.
  */
-function dedupeSorted(nums) {}
+function dedupeSorted(nums) {
+  const tempArr = []
+}
