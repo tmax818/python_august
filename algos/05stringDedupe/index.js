@@ -23,4 +23,26 @@ const expected4 = "a";
  * @param {string} str A string that may contain duplicates.
  * @returns {string} The given string with any duplicate characters removed.
  */
-function stringDedupe(str) {}
+function stringDedupe(str) {
+  const obj = {}
+  let newStr = ""
+  for(let i = 0; i< str.length; i++){
+    if(obj[str[i]]){
+      continue
+    } else {
+      newStr += str[i]
+      obj[str[i]] = 1
+    }
+    // obj[str[i]] = 1
+    // console.log(obj)
+    // if(obj[str[i]] === 1){
+    //   newStr += str[i]
+    // } 
+    // else {
+    //   continue
+    // }
+  }
+  console.log(newStr)
+  return newStr
+}
+stringDedupe(str2)
